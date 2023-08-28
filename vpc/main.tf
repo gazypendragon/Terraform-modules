@@ -24,7 +24,7 @@ data "aws_availability_zones" "available_zones" {}
 # create public subnet az1
 resource "aws_subnet" "public_subnet_az1" {
   vpc_id                  =  aws_vpc.vpc.id
-  cidr_block              = var.public_subnet_az1-cidr
+  cidr_block              = var.public_subnet_az1_cidr
   availability_zone       = data.aws_availability_zones.available_zones.names[0]
   map_public_ip_on_launch = true
 
@@ -36,7 +36,7 @@ resource "aws_subnet" "public_subnet_az1" {
 # create public subnet az2
 resource "aws_subnet" "public_subnet_az2" {
   vpc_id                  = aws_vpc.vpc.id
-  cidr_block              = var.public_subnet_az2-cidr
+  cidr_block              = var.public_subnet_az2_cidr
   availability_zone       = data.aws_availability_zones.available_zones.names[1]
   map_public_ip_on_launch = true
 
@@ -61,7 +61,7 @@ resource "aws_route_table" "public_route_table" {
 
 # associate public subnet az1 to "public route table"
 resource "aws_route_table_association" "public_subnet_az1_rt_association" {
-  subnet_id      = [aws_subnet.public_subnet_az1.id]
+  subnet_id      = aws_subnet.public_subnet_az1.id
   route_table_id = aws_route_table.public_route_table.id
 }
 
@@ -74,7 +74,7 @@ resource "aws_route_table_association" "public_subnet_2_rt_association" {
 # create private app subnet az1
 resource "aws_subnet" "private_app_subnet_az1" {
   vpc_id                  = aws_vpc.vpc.id
-  cidr_block              = var.private_app_subnet_az1-cidr
+  cidr_block              = var.private_app_subnet_az1_cidr
   availability_zone       = data.aws_availability_zones.available_zones.names[0]
   map_public_ip_on_launch = false
 
@@ -86,7 +86,7 @@ resource "aws_subnet" "private_app_subnet_az1" {
 # create private app subnet az2
 resource "aws_subnet" "private_app_subnet_az2" {
   vpc_id                  = aws_vpc.vpc.id
-  cidr_block              = var.private_app_subnet_az2-cidr
+  cidr_block              = var.private_app_subnet_az1_cidr
   availability_zone       = data.aws_availability_zones.available_zones.names[1]
   map_public_ip_on_launch = false
 
