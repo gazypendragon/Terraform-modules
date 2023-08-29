@@ -74,7 +74,6 @@ resource "aws_route_table_association" "private_data_subnet_az1_rt_az1_associati
 resource "aws_route_table" "private_route_table_az2" {
   vpc_id = var.vpc_id
 
-
   route {
     cidr_block     = "0.0.0.0/0"
     nat_gateway_id = aws_nat_gateway.nat_gateway_az2.id
