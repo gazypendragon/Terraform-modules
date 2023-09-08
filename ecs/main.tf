@@ -67,7 +67,7 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
 # create ecs service
 resource "aws_ecs_service" "ecs_service" {
   name                               = "${var.project_name}-${var.environment}-service"
-  launch_type                        = "FAREGATE"
+  launch_type                        = "FARGATE"
   cluster                            = aws_ecs_cluster.ecs_cluster.id
   task_definition                    = aws_ecs_task_definition.ecs_task_definition.arn
   platform_version                   = "LATEST"
