@@ -13,7 +13,7 @@ resource "aws_cloudwatch_log_group" "log_group" {
   name = "/ecs/${var.project_name}-${var.environment}-td"
 
   lifecycle {
-    create_before_destroy = 
+    create_before_destroy = true
   }
 }
 
