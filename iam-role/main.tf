@@ -49,7 +49,7 @@ data "aws_iam_policy_document" "ecs_task_execution_policy_document" {
 # create iam policy
 resource "aws_iam_policy" "ecs_task_execution_policy" {
   name   = "${var.project_name}-${var.environment}-ecs-task-execution-role-policy"
-  policy = data.aws_iam_policy_document.assume_role_policy.json
+  policy = data.aws_iam_policy_document.ecs_task_execution_policy_document.json
 }
 
 # create an iam role
