@@ -285,7 +285,7 @@ module "ecs" {
 
   project_name                   = "myproject"
   environment                    = "production"
-  ecs_task_execution_role_arn    = "arn:aws:iam::123456789012:role/ecs-task-execution-role"
+  ecs_task_execution_role_arn    = "arn:aws:iam::xxxxxxxxxxxx:role/ecs-task-execution-role"
   container_image                = "mycontainerimage:latest"
   region                         = "us-east-1"
   architecture                   = "x86_64"
