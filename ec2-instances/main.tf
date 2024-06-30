@@ -11,7 +11,7 @@ data "aws_ami" "amazon_linux_2" {
 
 # Create EC2 instances
 resource "aws_instance" "ec2_instance" {
-  count                  = var.instance_count
+  count = var.instance_count
 
   ami                    = data.aws_ami.amazon_linux_2.id
   instance_type          = var.instance_type
