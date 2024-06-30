@@ -78,7 +78,7 @@ resource "aws_security_group" "app_server_security_group" {
     from_port       = 80
     to_port         = 80
     protocol        = "tcp"
-    security_groups = [aws_security_group.alb_security_group.id]
+    # security_groups = [aws_security_group.alb_security_group.id]
   }
 
   ingress {
@@ -86,7 +86,7 @@ resource "aws_security_group" "app_server_security_group" {
     from_port       = 443
     to_port         = 443
     protocol        = "tcp"
-    security_groups = [aws_security_group.alb_security_group.id]
+    # security_groups = [aws_security_group.alb_security_group.id]
   }
 
   egress {
