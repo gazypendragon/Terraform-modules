@@ -64,6 +64,15 @@ resource "aws_security_group" "app_server_security_group" {
   description = "enable http/https access on port 80/443 via alb sg"
   vpc_id      = var.vpc_id
 
+  # Allow SSH from GitHub Actions
+  ingress {
+    description = "SSH from GitHub Actions"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = var.github_actions_ip_range
+  }
+
   ingress {
     description     = "http access"
     from_port       = 80
