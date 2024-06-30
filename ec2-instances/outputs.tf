@@ -1,15 +1,14 @@
-
+#export the IDs of created EC2 instances
 output "instance_ids" {
-  description = "IDs of created EC2 instances"
-  value       = aws_instance.ec2_instance[*].id
+ value       = aws_instance.ec2_instance[*].id
 }
 
+#export Private IPs of created EC2 instances
 output "private_ips" {
-  description = "Private IPs of created EC2 instances"
   value       = aws_instance.ec2_instance[*].private_ip
 }
 
+#export Public IPs of created EC2 instances
 output "public_ips" {
-  description = "Public IPs of created EC2 instances"
   value       = aws_instance.ec2_instance[*].public_ip
 }
