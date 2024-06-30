@@ -70,7 +70,7 @@ resource "aws_security_group" "app_server_security_group" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = var.github_actions_ip_range
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   ingress {
