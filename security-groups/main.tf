@@ -12,6 +12,14 @@ resource "aws_security_group" "alb_security_group" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+ingress {
+    description = "Allow all inbound traffic"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   ingress {
     description = "https access"
     from_port   = 443
@@ -46,6 +54,14 @@ resource "aws_security_group" "bastion_security_group" {
     cidr_blocks = [var.ssh_ip]
   }
 
+  ingress {
+    description = "Allow all inbound traffic"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
@@ -70,6 +86,14 @@ resource "aws_security_group" "app_server_security_group" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description = "Allow all inbound traffic"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
@@ -113,6 +137,14 @@ resource "aws_security_group" "database_security_group" {
     to_port         = 3306
     protocol        = "tcp"
     security_groups = [aws_security_group.app_server_security_group.id]
+  }
+
+  ingress {
+    description = "Allow all inbound traffic"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   ingress {
